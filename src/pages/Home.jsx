@@ -16,7 +16,7 @@ const Home = () => {
     const getTrendMovies = async () => {
       try {
         setIsLoading(true);
-        const response = await fetchTrendMovie();
+        const response = await fetchTrendMovie(pageNumber);
         console.log(response.data);
         setTrendMovies(prev => [...prev, ...response.data.results]);
         setTotalPage(response.data.total_pages);
@@ -28,7 +28,7 @@ const Home = () => {
       }
     };
     getTrendMovies();
-  }, []);
+  }, [pageNumber]);
 
   const onLoadMore = () => {
     setPageNumber(prev => prev + 1);
