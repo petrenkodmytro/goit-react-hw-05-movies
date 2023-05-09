@@ -13,6 +13,10 @@ export const List = styled.ul`
   margin-right: auto;
 `;
 
+export const Title = styled.h2`
+  text-align: center;
+`;
+
 export const Alert = styled.p`
   position: absolute;
   top: 140px;

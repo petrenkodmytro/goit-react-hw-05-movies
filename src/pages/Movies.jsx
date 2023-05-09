@@ -1,38 +1,51 @@
-import { fetchTrendMovie } from 'api/fetchData';
+import { fetchMovieByName } from 'api/fetchData';
 import { Button } from 'components/Button/Button';
 import { ListMovie } from 'components/ListMovies/ListMovies';
 import { Alert } from 'components/ListMovies/ListMovies.styled';
 import { Loader } from 'components/Loader/Loader';
+import { Searchbar } from 'components/Searchbar/Searchbar';
 import { useEffect, useState } from 'react';
 import ScrollToTop from 'react-scroll-to-top';
 
-const Home = () => {
-  const [trendMovies, setTrendMovies] = useState([]);
+const Movies = () => {
+  const [textQuery, setTextQuery] = useState('');
+  const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPage, setTotalPage] = useState(null);
 
   useEffect(() => {
-    const getTrendMovies = async () => {
+    if (!textQuery) {
+      return;
+    }
+    const getMovieByName = async () => {
       try {
         setIsLoading(true);
         setError(null);
-        const response = await fetchTrendMovie(pageNumber);
+        const response = await fetchMovieByName(textQuery, pageNumber);
         console.log(response.data);
-        setTrendMovies(prev => [...prev, ...response.data.results]);
+        setMovies(prev => [...prev, ...response.data.results]);
         setTotalPage(response.data.total_pages);
       } catch (error) {
         setTotalPage(null);
-        setTrendMovies([]);
+        setMovies([]);
         setError(error.message);
         console.log(error.message);
       } finally {
         setIsLoading(false);
       }
     };
-    getTrendMovies();
-  }, [pageNumber]);
+    getMovieByName();
+  }, [textQuery, pageNumber]);
+
+  // записываем запрос поиска в App из Searchbar
+  const handleSubmit = searchValue => {
+    setTextQuery(searchValue);
+    setPageNumber(1);
+    setMovies([]);
+    setTotalPage(null);
+  };
 
   const onLoadMore = () => {
     setPageNumber(prev => prev + 1);
@@ -40,7 +53,9 @@ const Home = () => {
 
   return (
     <>
-      <ListMovie movies={trendMovies} title="Hit movies" />
+      <Searchbar onSubmit={handleSubmit} />
+
+      <ListMovie movies={movies} title="Search movies by name" />
 
       {/* спінер */}
       <Loader isLoading={isLoading} />
@@ -56,4 +71,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Movies;

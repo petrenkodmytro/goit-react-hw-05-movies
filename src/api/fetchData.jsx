@@ -15,3 +15,21 @@ export async function fetchTrendMovie(pageNumber) {
   // console.log(response.data);
   return response;
 }
+
+export async function fetchMovieByName(query, pageNumber) {
+  const API_URL = 'https://api.themoviedb.org/3/search/movie';
+  // параметри запиту на бекенд
+  const options = {
+    params: {
+      query,
+      api_key: '6eb92bed4e8effdfb5cc4dc890c8b1e8',
+      language: 'en-US',
+      page: pageNumber,
+      include_adult: false,
+    },
+  };
+
+  const response = await axios.get(API_URL, options);
+  // console.log(response.data);
+  return response;
+}

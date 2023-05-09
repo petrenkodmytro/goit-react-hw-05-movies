@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-import { List } from './ListMovies.styled';
+import { List, Title } from './ListMovies.styled';
 import { ItemMovie } from 'components/ItemMovie/ItemMovie';
 
-export const ListMovie = ({ trendMovies }) => {
+export const ListMovie = ({ movies, title }) => {
   return (
     <>
-      <h3>Trending today</h3>
+      <Title>{title}</Title>
       <List>
-        {trendMovies.map(movie => (
+        {movies.map(movie => (
           <ItemMovie key={movie.id} item={movie} />
         ))}
       </List>
@@ -16,5 +16,6 @@ export const ListMovie = ({ trendMovies }) => {
 };
 
 ListMovie.propTypes = {
-  trendMovies: PropTypes.array.isRequired,
+  movies: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
 };

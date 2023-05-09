@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { BiSearch } from 'react-icons/bi';
 import {
   SearchbarWrap,
@@ -45,7 +46,7 @@ export const Searchbar = ({ onSubmit }) => {
           type="text"
           autocomplete="off"
           autoFocus
-          placeholder="Search images and photos"
+          placeholder="Search movies"
         />
       </SearchForm>
       <ToastContainer />
@@ -53,48 +54,6 @@ export const Searchbar = ({ onSubmit }) => {
   );
 };
 
-// Пример на классах
-
-// export class Searchbar extends Component {
-//   state = {
-//     textQuery: '',
-//   };
-//   // следим за изменениями Input (контролируемый элемент)
-//   onChangeInput = e => {
-//     this.setState({ textQuery: e.currentTarget.value.trim().toLowerCase() });
-//   };
-
-//   onSubmitForm = e => {
-//     e.preventDefault();
-//     // уведомление
-//     if (this.state.textQuery === '') {
-//       toast.error(`${notificationMassege}`, notificationOptions);
-//     }
-//     //фун-я onSubmit пришла из App через пропсы
-//     this.props.onSubmit(this.state.textQuery);
-//     //очистка строки поиска
-//     this.setState({ textQuery: '' });
-//   };
-
-//   render() {
-//     return (
-//       <SearchbarWrap>
-//         <SearchForm onSubmit={this.onSubmitForm}>
-//           <SearchBtn type="submit">
-//             <BiSearch size="24" />
-//           </SearchBtn>
-
-//           <SearchInput
-//             value={this.state.textQuery}
-//             onChange={this.onChangeInput}
-//             type="text"
-//             autocomplete="off"
-//             autoFocus
-//             placeholder="Search images and photos"
-//           />
-//         </SearchForm>
-//         <ToastContainer />
-//       </SearchbarWrap>
-//     );
-//   }
-// }
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
