@@ -1,17 +1,14 @@
 import axios from 'axios';
 
-export async function fetchData(query, pageNumber) {
-  const API_URL = 'https://pixabay.com/api/';
+export async function fetchTrendMovie() {
+  const API_URL = 'https://api.themoviedb.org/3/trending/movie/day';
   // параметри запиту на бекенд
   const options = {
     params: {
-      key: '34377092-e5c25fb54909ad5e9d7281441',
-      q: query,
-      image_type: 'photo',
-      orientation: 'horizontal',
-      safesearch: 'true',
-      page: pageNumber,
-      per_page: 12,
+      api_key: '6eb92bed4e8effdfb5cc4dc890c8b1e8',
+      language: 'en-US',
+      // page: pageNumber,
+     
     },
   };
 
