@@ -33,3 +33,18 @@ export async function fetchMovieByName(query, pageNumber) {
   // console.log(response.data);
   return response;
 }
+
+export async function fetchMovieById(movieId) {
+  const API_URL = `https://api.themoviedb.org/3/movie/${movieId}`;
+  // параметри запиту на бекенд
+  const options = {
+    params: {
+      api_key: '6eb92bed4e8effdfb5cc4dc890c8b1e8',
+      language: 'en-US',
+    },
+  };
+
+  const response = await axios.get(API_URL, options);
+  // console.log(response.data);
+  return response;
+}

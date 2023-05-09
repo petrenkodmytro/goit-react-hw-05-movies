@@ -6,6 +6,8 @@ import { Loader } from 'components/Loader/Loader';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { useEffect, useState } from 'react';
 import ScrollToTop from 'react-scroll-to-top';
+import { toast } from 'react-toastify';
+import { notificationOptions } from '../components/Notification/Notification';
 
 const Movies = () => {
   const [textQuery, setTextQuery] = useState('');
@@ -25,6 +27,13 @@ const Movies = () => {
         setError(null);
         const response = await fetchMovieByName(textQuery, pageNumber);
         console.log(response.data);
+        if (response.data.results.length === 0) {
+          toast.error(
+            `Sorry, there are no find movie with this name. Please try again.`,
+            notificationOptions
+          );
+          return;
+        }
         setMovies(prev => [...prev, ...response.data.results]);
         setTotalPage(response.data.total_pages);
       } catch (error) {
@@ -39,7 +48,7 @@ const Movies = () => {
     getMovieByName();
   }, [textQuery, pageNumber]);
 
-  // записываем запрос поиска в App из Searchbar
+  // записываем запрос поиска из Searchbar
   const handleSubmit = searchValue => {
     setTextQuery(searchValue);
     setPageNumber(1);
