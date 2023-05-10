@@ -64,7 +64,7 @@ const Movies = () => {
     <>
       <Searchbar onSubmit={handleSubmit} />
 
-      <ListMovie movies={movies} title="Search movies by name" />
+      <ListMovie movies={movies} />
 
       {/* спінер */}
       <Loader isLoading={isLoading} />

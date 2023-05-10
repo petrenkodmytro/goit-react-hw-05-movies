@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SearchbarWrap = styled.header`
+export const SearchbarWrap = styled.div`
   top: 0;
   left: 0;
   position: sticky;

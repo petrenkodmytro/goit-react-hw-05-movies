@@ -46,7 +46,7 @@ export const Searchbar = ({ onSubmit }) => {
           type="text"
           autocomplete="off"
           autoFocus
-          placeholder="Search movies"
+          placeholder="Search movies by name"
         />
       </SearchForm>
       <ToastContainer />
