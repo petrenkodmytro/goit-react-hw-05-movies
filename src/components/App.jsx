@@ -1,11 +1,20 @@
-import Home from 'pages/Home';
-import MovieDetails from 'pages/MovieDetails';
-import Movies from 'pages/Movies';
+import { lazy } from 'react';
+// import Home from 'pages/Home';
+// import MovieDetails from 'pages/MovieDetails';
+// import Movies from 'pages/Movies';
+// import Cast from './Cast/Cast';
+// import Reviews from './Reviews/Reviews';
 import { Route, Routes } from 'react-router-dom';
+//не завантажуємо асинхронно
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { GlobalStyle } from './GlobalStyle';
-import { Cast } from './Cast/Cast';
-import { Reviews } from './Reviews/Reviews';
+
+//Метод lazy() очікує функцію-завантажувач, яка повертає результат динамічного імпорту - проміс, значенням якого буде дефолтний експорт модуль (компонент).
+const Home = lazy(() => import('../pages/Home'));
+const Movies = lazy(() => import('../pages/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails'));
+const Cast = lazy(() => import('../components/Cast/Cast'));
+const Reviews = lazy(() => import('../components/Reviews/Reviews'));
 
 export const App = () => {
   return (

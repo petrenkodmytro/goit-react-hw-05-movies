@@ -13,7 +13,6 @@ export const NavWrapper = styled.nav`
   display: flex;
   justify-content: center;
   gap: 30px;
-  padding: 10px;
   border-bottom: solid 1px;
   margin-bottom: 20px;
 `;
@@ -26,7 +25,7 @@ export const StyledNavLink = styled(NavLink)`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 8px;
+  padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 0;
@@ -51,6 +50,15 @@ export const StyledNavLink = styled(NavLink)`
 
 export const Header = styled.header`
   width: 1280px;
+  > p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  /* display: flex;
+  flex-direction: column  ;
+  align-items: center; */
 `;
 
 export const Main = styled.main`

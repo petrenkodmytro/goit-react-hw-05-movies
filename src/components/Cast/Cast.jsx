@@ -12,7 +12,7 @@ import {
 } from './Cast.styled';
 import actorImage from '../../images/anonymous.jpg';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   // console.log(movieId);
 
@@ -67,3 +67,5 @@ export const Cast = () => {
     </>
   );
 };
+
+export default Cast;

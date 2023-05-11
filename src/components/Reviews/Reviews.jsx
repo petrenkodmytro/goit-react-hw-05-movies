@@ -10,7 +10,7 @@ import {
   ListReviews,
 } from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   // console.log(movieId);
 
@@ -58,3 +58,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

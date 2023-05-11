@@ -6,17 +6,18 @@ import {
   NavWrapper,
   StyledNavLink,
 } from 'components/SharedLayout/SharedLayout.styled';
-import { useEffect, useRef, useState } from 'react';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import { IoIosPeople } from 'react-icons/io';
 import { VscPreview } from 'react-icons/vsc';
 import { TiArrowBackOutline } from 'react-icons/ti';
+import { StyledNavLinkBack } from './MovieDitails.styled';
 
 const MovieDetails = () => {
   // хук useParams() повертає об'єкт з усіма динамічними параметрами, які є в поточному URL
   const { movieId } = useParams();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const backLinkLocation = useRef(location?.state?.from ?? '/');
 
   const [dataMovie, setDataMovie] = useState({});
@@ -43,10 +44,12 @@ const MovieDetails = () => {
 
   return (
     <>
-      <StyledNavLink to={backLinkLocation.current}>
-        <TiArrowBackOutline />
-        Go to back
-      </StyledNavLink>
+      <StyledNavLinkBack to={backLinkLocation.current}>
+        
+          <TiArrowBackOutline />
+          Go to back
+        
+      </StyledNavLinkBack>
 
       <CardMovie dataMovie={dataMovie} />
 
@@ -61,7 +64,11 @@ const MovieDetails = () => {
         </StyledNavLink>
       </NavWrapper>
 
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        {/* вказати де саме в компоненті батьківського маршруту ми хочемо рендерувати дочірні маршрути */}
+        <Outlet />
+      </Suspense>
+
       {/* спінер */}
       <Loader isLoading={isLoading} />
       {/* помилка запиту */}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { FcHome } from 'react-icons/fc';
 import { BiCameraMovie } from 'react-icons/bi';
 import {
@@ -16,6 +16,7 @@ export const SharedLayout = () => {
   return (
     <Wrapper>
       <Header>
+        <p>My Movie App</p>
         <NavWrapper>
           <StyledNavLink to="/">
             <FcHome />
@@ -29,8 +30,10 @@ export const SharedLayout = () => {
       </Header>
 
       <Main>
-        {/* вказати де саме в компоненті батьківського маршруту ми хочемо рендерувати дочірні маршрути */}
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          {/* вказати де саме в компоненті батьківського маршруту ми хочемо рендерувати дочірні маршрути */}
+          <Outlet />
+        </Suspense>
       </Main>
 
       <Footer>
