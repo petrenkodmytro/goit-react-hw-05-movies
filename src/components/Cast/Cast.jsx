@@ -3,12 +3,18 @@ import { useEffect, useState } from 'react';
 import { fetchCastById } from 'api/fetchData';
 import { Loader } from 'components/Loader/Loader';
 import { Alert } from 'components/ListMovies/ListMovies.styled';
-import { ImgActor } from './Cast.styled';
+import {
+  CarecterActor,
+  ImgActor,
+  ItemActor,
+  ListActors,
+  NameActor,
+} from './Cast.styled';
 import actorImage from '../../images/anonymous.jpg';
 
 export const Cast = () => {
   const { movieId } = useParams();
-  console.log(movieId);
+  // console.log(movieId);
 
   const [cast, setCast] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +26,7 @@ export const Cast = () => {
         setIsLoading(true);
         setError(null);
         const response = await fetchCastById(movieId);
-        console.log(response.data.cast);
+        // console.log(response.data.cast);
         setCast(response.data.cast);
       } catch (error) {
         setError(error.message);
@@ -32,11 +38,15 @@ export const Cast = () => {
     getCastById();
   }, [movieId]);
 
+  if (!cast.length) {
+    return <p>Sorry. We don't have any information about the cast.</p>;
+  }
+
   return (
     <>
-      <ul>
+      <ListActors>
         {cast.map(castItem => (
-          <li key={castItem.id}>
+          <ItemActor key={castItem.id}>
             <ImgActor
               src={
                 castItem.profile_path
@@ -45,9 +55,11 @@ export const Cast = () => {
               }
               alt={`${castItem.name}`}
             />
-          </li>
+            <NameActor>{castItem.name}</NameActor>
+            <CarecterActor>{castItem.character}</CarecterActor>
+          </ItemActor>
         ))}
-      </ul>
+      </ListActors>
       {/* спінер */}
       <Loader isLoading={isLoading} />
       {/* помилка запиту */}

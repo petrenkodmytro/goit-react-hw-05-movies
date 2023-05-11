@@ -1,21 +1,27 @@
 import PropTypes from 'prop-types';
-import { Item, Img } from './ItemMovie.styled';
+import { Item, Img, StyledLink } from './ItemMovie.styled';
 import defaultImage from '../../images/no-poster.png';
-import { Link } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 
-export const ItemMovie = ({ item }) => {
+export const ItemMovie = ({ item, state }) => {
+  // const location = useLocation();
+  // console.log(location);
+
   const posterPath = item.poster_path
     ? `https://image.tmdb.org/t/p/original${item.poster_path}`
     : defaultImage;
 
   return (
     //  посилання на сторінку фільму
-    <Link to={`/movies/${item.id}`}>
+    <StyledLink to={`/movies/${item.id}`} state={state}>
       <Item>
-        <span>{item.title}</span> | <span>{item.release_date.slice(0, 4)}</span>
+        <p>
+          <span>{item.title.slice(0, 32)}</span> |
+          <span>{item.release_date.slice(0, 4)}</span>
+        </p>
         <Img src={posterPath} alt={item.title} />
       </Item>
-    </Link>
+    </StyledLink>
   );
 };
 

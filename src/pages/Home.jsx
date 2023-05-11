@@ -4,6 +4,7 @@ import { ListMovie } from 'components/ListMovies/ListMovies';
 import { Alert } from 'components/ListMovies/ListMovies.styled';
 import { Loader } from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import ScrollToTop from 'react-scroll-to-top';
 
 const Home = () => {
@@ -13,13 +14,17 @@ const Home = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPage, setTotalPage] = useState(null);
 
+  //Повертає об'єкт розташування, що представляє поточний URL, щоразу коли ми переходимо новим маршрутом або оновлюємо частину поточного URL.
+  const location = useLocation();
+  // console.log(location);
+
   useEffect(() => {
     const getTrendMovies = async () => {
       try {
         setIsLoading(true);
         setError(null);
         const response = await fetchTrendMovie(pageNumber);
-        console.log(response.data);
+        // console.log(response.data);
         setTrendMovies(prev => [...prev, ...response.data.results]);
         setTotalPage(response.data.total_pages);
       } catch (error) {
@@ -40,7 +45,12 @@ const Home = () => {
 
   return (
     <>
-      <ListMovie movies={trendMovies} title="Hit movies" />
+      <ListMovie
+        movies={trendMovies}
+        title="Hit movies"
+        // передаємо зворотню адресу HOME
+        state={{ from: location }}
+      />
 
       {/* спінер */}
       <Loader isLoading={isLoading} />

@@ -21,11 +21,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   color: #212121;
-  background-color: #fff;
+  background-color: ${p => p.theme.colors.bgc};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* background: url(https://images.unsplash.com/photo-1505775561242-727b7fba20f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80); */
+  /* background: url(https://is1-ssl.mzstatic.com/image/thumb/Podcasts123/v4/79/71/fe/7971fe22-bc78-d2b4-7847-d4cf327bd97d/mza_333893279181940916.jpg/1200x600wp.png); */
 
 
   background-repeat: no-repeat;

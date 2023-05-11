@@ -23,7 +23,7 @@ export const Info = styled.span`
 `;
 
 export const ImgMovie = styled.img`
-  max-width: 300px;
+  max-width: 250px;
   object-fit: cover;
 `;
 

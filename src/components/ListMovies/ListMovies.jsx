@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import { List } from './ListMovies.styled';
 import { ItemMovie } from 'components/ItemMovie/ItemMovie';
 
-export const ListMovie = ({ movies, title }) => {
+export const ListMovie = ({ movies, state }) => {
   return (
     <List>
       {movies.map(movie => (
-        <ItemMovie key={movie.id} item={movie} />
+        <ItemMovie key={movie.id} item={movie} state={state} />
       ))}
     </List>
   );
@@ -14,5 +14,4 @@ export const ListMovie = ({ movies, title }) => {
 
 ListMovie.propTypes = {
   movies: PropTypes.array.isRequired,
-  title: PropTypes.string.isRequired,
 };

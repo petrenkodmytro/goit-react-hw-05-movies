@@ -25,8 +25,8 @@ export const CardMovie = ({ dataMovie }) => {
 
         <MovieInfo>
           <Title>
-            {title ?? 'Unknown'} |{' '}
-            {new Date(release_date).getFullYear() ?? 'Unknown'}
+            {title ?? 'Unknown'} (
+            {new Date(release_date).getFullYear() ?? 'Unknown'})
           </Title>
           <p>
             <Info>Score: </Info> {(vote_average * 10).toFixed(0)}%

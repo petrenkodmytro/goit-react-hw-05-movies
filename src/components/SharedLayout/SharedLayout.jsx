@@ -1,16 +1,32 @@
 import React from 'react';
-import {  Author, Footer, Main, Wrapper } from './SharedLayout.styled';
-import { NavLink, Outlet } from 'react-router-dom';
+import { FcHome } from 'react-icons/fc';
+import { BiCameraMovie } from 'react-icons/bi';
+import {
+  Author,
+  Footer,
+  Header,
+  Main,
+  NavWrapper,
+  StyledNavLink,
+  Wrapper,
+} from './SharedLayout.styled';
+import { Outlet } from 'react-router-dom';
 
 export const SharedLayout = () => {
   return (
     <Wrapper>
-      <header>
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/movies">Movies</NavLink>
-        </nav>
-      </header>
+      <Header>
+        <NavWrapper>
+          <StyledNavLink to="/">
+            <FcHome />
+            Home
+          </StyledNavLink>
+          <StyledNavLink to="/movies">
+            <BiCameraMovie />
+            Movies
+          </StyledNavLink>
+        </NavWrapper>
+      </Header>
 
       <Main>
         {/* вказати де саме в компоненті батьківського маршруту ми хочемо рендерувати дочірні маршрути */}

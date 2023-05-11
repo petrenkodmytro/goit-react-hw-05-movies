@@ -1,18 +1,68 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 15px
+  align-items: center;
+  /* padding: 15px; */
+`;
+
+export const NavWrapper = styled.nav`
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 10px;
+  border-bottom: solid 1px;
+  margin-bottom: 20px;
+`;
+
+export const StyledNavLink = styled(NavLink)`
+  width: 150px;
+  text-align: center;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+  background-color: ${p => p.theme.colors.accentLight};
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  :hover,
+  :focus {
+    background-color: ${p => p.theme.colors.accentDark};
+    color: #fff;
+    box-shadow: -2px -2px 5px #fff,
+      2px 2px 5px ${p => p.theme.colors.accentDark};
+  }
+  &.active {
+    color: #fff;
+    background-color: ${p => p.theme.colors.accentDark};
+  }
+`;
+
+export const Header = styled.header`
+  width: 1280px;
 `;
 
 export const Main = styled.main`
   flex: 1 1 auto;
+  max-width: 1280px;
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 
 export const Footer = styled.footer`
-  padding-left: 20px;
+  /* padding-left: 20px; */
+  margin-top: 20px;
 `;
 
 export const Author = styled.p`
