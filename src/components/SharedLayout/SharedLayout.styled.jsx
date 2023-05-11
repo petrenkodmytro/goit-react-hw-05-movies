@@ -33,6 +33,7 @@ export const StyledNavLink = styled(NavLink)`
   border-radius: 5px;
   border: none;
   text-decoration: none;
+  color: ${p => p.theme.colors.main};
   background-color: ${p => p.theme.colors.accentLight};
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   :hover,
