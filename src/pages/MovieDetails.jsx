@@ -7,7 +7,7 @@ import {
   StyledNavLink,
 } from 'components/SharedLayout/SharedLayout.styled';
 import { Suspense, useEffect, useRef, useState } from 'react';
-import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { IoIosPeople } from 'react-icons/io';
 import { VscPreview } from 'react-icons/vsc';
 import { TiArrowBackOutline } from 'react-icons/ti';
@@ -45,10 +45,8 @@ const MovieDetails = () => {
   return (
     <>
       <StyledNavLinkBack to={backLinkLocation.current}>
-        
-          <TiArrowBackOutline />
-          Go to back
-        
+        <TiArrowBackOutline />
+        Go to back
       </StyledNavLinkBack>
 
       <CardMovie dataMovie={dataMovie} />
