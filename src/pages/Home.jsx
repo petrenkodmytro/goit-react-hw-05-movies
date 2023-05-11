@@ -19,24 +19,35 @@ const Home = () => {
   // console.log(location);
 
   useEffect(() => {
+    // отмена запроса
+    const controller = new AbortController();
+
     const getTrendMovies = async () => {
       try {
         setIsLoading(true);
-        setError(null);
-        const response = await fetchTrendMovie(pageNumber);
+        setError(null);  
+        const response = await fetchTrendMovie(pageNumber, controller);
         // console.log(response.data);
         setTrendMovies(prev => [...prev, ...response.data.results]);
         setTotalPage(response.data.total_pages);
       } catch (error) {
         setTotalPage(null);
         setTrendMovies([]);
-        setError(error.message);
-        console.log(error.message);
+        if (error.message === 'canceled') {
+          return;
+        } else {
+          setError(error.message);
+          console.log(error);
+        }
       } finally {
         setIsLoading(false);
       }
     };
     getTrendMovies();
+    //выполняется при размонтировании
+    return () => {
+      controller.abort();
+    };
   }, [pageNumber]);
 
   const onLoadMore = () => {
