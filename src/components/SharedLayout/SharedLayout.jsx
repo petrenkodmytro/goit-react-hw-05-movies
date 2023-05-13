@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { FcHome } from 'react-icons/fc';
 import { BiCameraMovie } from 'react-icons/bi';
+import { IoIosPeople } from 'react-icons/io';
 import {
   Author,
   Footer,
@@ -25,6 +26,10 @@ export const SharedLayout = () => {
           <StyledNavLink to="/movies">
             <BiCameraMovie />
             Movies
+          </StyledNavLink>
+          <StyledNavLink to="/actors">
+            <IoIosPeople />
+            Actors
           </StyledNavLink>
         </NavWrapper>
       </Header>

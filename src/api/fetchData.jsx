@@ -79,3 +79,22 @@ export async function fetchReviewsById(movieId) {
   // console.log(response.data);
   return response;
 }
+
+export async function fetchActors(query, pageNumber) {
+  const API_URL = query
+    ? 'https://api.themoviedb.org/3/search/person'
+    : 'https://api.themoviedb.org/3/person/popular';
+  // параметри запиту на бекенд
+  const options = {
+    params: {
+      query,
+      api_key: '6eb92bed4e8effdfb5cc4dc890c8b1e8',
+      language: 'en-US',
+      page: pageNumber,
+      include_adult: false,
+    },
+  };
+  const response = await axios.get(API_URL, options);
+  // console.log(response.data);
+  return response;
+}
