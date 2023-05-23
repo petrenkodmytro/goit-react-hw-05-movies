@@ -27,7 +27,7 @@ const Home = () => {
         setIsLoading(true);
         setError(null);  
         const response = await fetchTrendMovie(pageNumber, controller);
-        // console.log(response.data);
+        console.log(response.data);
         setTrendMovies(prev => [...prev, ...response.data.results]);
         setTotalPage(response.data.total_pages);
       } catch (error) {

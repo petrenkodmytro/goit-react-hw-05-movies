@@ -81,9 +81,7 @@ export async function fetchReviewsById(movieId) {
 }
 
 export async function fetchActors(query, pageNumber) {
-  const API_URL = query
-    ? 'https://api.themoviedb.org/3/search/person'
-    : 'https://api.themoviedb.org/3/person/popular';
+  const API_URL = 'https://api.themoviedb.org/3/search/person';
   // параметри запиту на бекенд
   const options = {
     params: {
@@ -94,6 +92,7 @@ export async function fetchActors(query, pageNumber) {
       include_adult: false,
     },
   };
+
   const response = await axios.get(API_URL, options);
   // console.log(response.data);
   return response;
