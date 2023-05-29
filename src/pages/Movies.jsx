@@ -72,7 +72,7 @@ const Movies = () => {
 
   return (
     <>
-      <Searchbar onSubmit={handleSubmit} />
+      <Searchbar onSubmit={handleSubmit} placeholder="Search movies by name"/>
 
       <ListMovie
         movies={movies}

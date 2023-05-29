@@ -14,7 +14,7 @@ import {
   notificationOptions,
 } from '../Notification/Notification';
 
-export const Searchbar = ({ onSubmit }) => {
+export const Searchbar = ({ onSubmit, placeholder }) => {
   const [textQuery, setTextQuery] = useState('');
 
   const onChangeInput = e => {
@@ -46,7 +46,7 @@ export const Searchbar = ({ onSubmit }) => {
           type="text"
           autocomplete="off"
           autoFocus
-          placeholder="Search movies by name"
+          placeholder={placeholder}
         />
       </SearchForm>
       <ToastContainer />

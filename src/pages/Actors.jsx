@@ -81,7 +81,7 @@ const Movies = () => {
   console.log(pageNumber);
   return (
     <>
-      <Searchbar onSubmit={handleSubmit} />
+      <Searchbar onSubmit={handleSubmit} placeholder="Search actors" />
       <ListActors>
         {actors.map(actor => (
           <ItemActor key={actor.id}>
