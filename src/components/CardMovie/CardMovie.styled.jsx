@@ -23,8 +23,14 @@ export const Info = styled.span`
 `;
 
 export const ImgMovie = styled.img`
-  max-width: 250px;
+  width: 150px;
   object-fit: cover;
+  @media screen and (min-width: 425px) {
+    width: 200px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 250px;
+  }
 `;
 
 export const AddInfo = styled.div``;

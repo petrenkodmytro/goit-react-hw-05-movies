@@ -4,6 +4,8 @@ export const ListReviews = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding: 10px;
+  background: linear-gradient(45deg, #cdceb7 0%, #dee3e3 50%, #e7ebda 100%);
 `;
 
 export const ItemReview = styled.li`

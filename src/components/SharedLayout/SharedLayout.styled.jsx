@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import bgImage from '../../images/bg-image-mob.jpg';
 
 export const Wrapper = styled.div`
   min-height: 100vh;
@@ -7,6 +8,11 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   /* padding: 15px; */
+  background-image: url(${bgImage});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 `;
 
 export const NavWrapper = styled.nav`
@@ -18,13 +24,13 @@ export const NavWrapper = styled.nav`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-  width: 150px;
+  width: 100px;
   text-align: center;
   font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -46,6 +52,13 @@ export const StyledNavLink = styled(NavLink)`
   &.active {
     color: #fff;
     background-color: ${p => p.theme.colors.accentDark};
+  }
+
+  @media screen and (min-width: 425px) {
+    width: 120px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 150px;
   }
 `;
 

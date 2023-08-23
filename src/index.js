@@ -8,8 +8,8 @@ const theme = {
   colors: {
     main: '#212624',
     bgc: '#dedce4',
-    accentLight: '#9199be',
-    accentDark: '#54678f',
+    accentLight: '#F2E8B1',
+    accentDark: '#A29B76',
     error: '#720017',
   },
 };
